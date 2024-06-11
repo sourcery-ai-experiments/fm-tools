@@ -47,7 +47,7 @@ layout = [
 ]
 
 # Create the window
-window = sg.Window("FM Position Score", layout)
+window = sg.Window("FM Role Score Calculator", layout)
 
 def import_html_table():
     file_path = sg.popup_get_file('Choose an HTML file', file_types=(("HTML Files", "*.html"),))
