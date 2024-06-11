@@ -5,7 +5,15 @@ import pandas as pd
 sg.theme('DarkAmber')
 
 # Load roles from the JSON file
-with open('player_roles.json', 'r') as file:
+try:
+    with open('player_roles.json', 'r') as file:
+        roles_data = json.load(file)
+except FileNotFoundError:
+    print("Error: The file 'player_roles.json' was not found.")
+except json.JSONDecodeError:
+    print("Error: The file 'player_roles.json' is not a valid JSON.")
+except Exception as e:
+    print(f"An unexpected error occurred: {e}")
     roles_data = json.load(file)
 
 # Create layout for the left side (checkboxes)
