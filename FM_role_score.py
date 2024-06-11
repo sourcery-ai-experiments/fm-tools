@@ -1,38 +1,30 @@
 import PySimpleGUI as sg
+import json
 import pandas as pd
 
 sg.theme('DarkAmber')
 
-# Possible roles in FM24
-checkbox_items = {
-    "Goalkeepers": ["gk_defend", "skd_defend", "sks_support", "ska_attack"],
-    "Central Defenders": [
-        "bpdd_defend", "bpds_stopper", "bpdc_cover", "cdd_defend",
-        "cds_stopper", "cdc_cover", "wcbd_defend", "wcbs_support",
-        "wcba_attack", "ls_support", "la_attack", "ncbd_defend",
-        "ncbs_stopper", "ncbc_cover"
-    ],
-    "Full Backs": [
-        "fbd_defend", "fbs_support", "fba_attack", "fbau_automatic",
-        "nfbd_defend", "wbd_defend", "wbs_support", "wba_attack",
-        "wbau_automatic", "cwbs_support", "cwba_attack", "iwbd_defend",
-        "iwbs_support", "iwba_attack", "iwbau_automatic"
-    ],
-    "Midfielders": [
-        "bwmd_defend", "bwms_support", "ad_defend", "hbd_defend",
-        "rps_support", "regs_support"
-    ]
-}
+# Load roles from the JSON file
+try:
+    with open('player_roles.json', 'r') as file:
+        roles_data = json.load(file)
+except FileNotFoundError:
+    print("Error: The file 'player_roles.json' was not found.")
+except json.JSONDecodeError:
+    print("Error: The file 'player_roles.json' is not a valid JSON.")
+except Exception as e:
+    print(f"An unexpected error occurred: {e}")
+    roles_data = json.load(file)
 
 # Create layout for the left side (checkboxes)
 left_layout = []
-for category, items in checkbox_items.items():
+for category, roles in roles_data.items():
     left_layout.append([sg.Text(category, font=("Arial", 12, "bold"))])
-    for item in items:
-        left_layout.append([sg.Checkbox(item, key=item)])
+    for role in roles:
+        left_layout.append([sg.Checkbox(role['role'], key=role['role_abbr'])])
 
 # Create a scrollable column for the left side (roles)
-left_column = sg.Column(left_layout, scrollable=True, vertical_scroll_only=True, size=(150, 400))
+left_column = sg.Column(left_layout, scrollable=True, vertical_scroll_only=True, size=(250, 400))
 
 # Create layout for the right side (buttons)
 right_layout = [
@@ -55,6 +47,9 @@ def import_html_table():
         tables = pd.read_html(file_path, encoding='utf-8')
         if tables:
             df = tables[0]
+
+            # Remove rows where the "Name" column is NaN
+            df = df.dropna(subset=["Name"])
             
             # Function to clean and transform the data
             def transform_value(column, value):

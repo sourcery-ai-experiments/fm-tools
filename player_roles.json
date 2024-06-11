@@ -1,0 +1,166 @@
+{
+    "Goalkeepers": [
+        {
+            "role": "Goalkeeper Defend",
+            "role_abbr": "gkd"
+        },
+        {
+            "role": "Sweeper Keeper Defend",
+            "role_abbr": "skd"
+        },
+        {
+            "role": "Sweeper Keeper Support",
+            "role_abbr": "sks"
+        },
+        {
+            "role": "Sweeper Keeper Attack",
+            "role_abbr": "ska"
+        }
+    ],
+    "Central Defenders": [
+        {
+            "role": "Ball-Playing Defender Defend",
+            "role_abbr": "bpdd"
+        },
+        {
+            "role": "Ball-Playing Defender Stopper",
+            "role_abbr": "bpds"
+        },
+        {
+            "role": "Ball-Playing Defender Cover",
+            "role_abbr": "bpdc"
+        },
+        {
+            "role": "Central Defender Defend",
+            "role_abbr": "cdd"
+        },
+        {
+            "role": "Central Defender Stopper",
+            "role_abbr": "cds"
+        },
+        {
+            "role": "Central Defender Cover",
+            "role_abbr": "cdc"
+        },
+        {
+            "role": "Wide Center-Back Defend",
+            "role_abbr": "wcbd"
+        },
+        {
+            "role": "Wide Center-Back Support",
+            "role_abbr": "wcbs"
+        },
+        {
+            "role": "Wide Center-Back Attack",
+            "role_abbr": "wcba"
+        },
+        {
+            "role": "Libero Support",
+            "role_abbr": "ls"
+        },
+        {
+            "role": "Libero Attack",
+            "role_abbr": "la"
+        },
+        {
+            "role": "No-Nonsense Center-Back Defend",
+            "role_abbr": "ncbd"
+        },
+        {
+            "role": "No-Nonsense Center-Back Stopper",
+            "role_abbr": "ncbs"
+        },
+        {
+            "role": "No-Nonsense Center-Back Cover",
+            "role_abbr": "ncbc"
+        }
+    ],
+    "Full Backs": [
+        {
+            "role": "Full Back Defend",
+            "role_abbr": "fbd"
+        },
+        {
+            "role": "Full Back Support",
+            "role_abbr": "fbs"
+        },
+        {
+            "role": "Full Back Attack",
+            "role_abbr": "fba"
+        },
+        {
+            "role": "Full Back Automatic",
+            "role_abbr": "fbau"
+        },
+        {
+            "role": "No-Nonsense Full Back Defend",
+            "role_abbr": "nfbd"
+        },
+        {
+            "role": "Wing Back Defend",
+            "role_abbr": "wbd"
+        },
+        {
+            "role": "Wing Back Support",
+            "role_abbr": "wbs"
+        },
+        {
+            "role": "Wing Back Attack",
+            "role_abbr": "wba"
+        },
+        {
+            "role": "Wing Back Automatic",
+            "role_abbr": "wbau"
+        },
+        {
+            "role": "Complete Wing Back Support",
+            "role_abbr": "cwbs"
+        },
+        {
+            "role": "Complete Wing Back Attack",
+            "role_abbr": "cwba"
+        },
+        {
+            "role": "Inverted Wing Back Defend",
+            "role_abbr": "iwbd"
+        },
+        {
+            "role": "Inverted Wing Back Support",
+            "role_abbr": "iwbs"
+        },
+        {
+            "role": "Inverted Wing Back Attack",
+            "role_abbr": "iwba"
+        },
+        {
+            "role": "Inverted Wing Back Automatic",
+            "role_abbr": "iwbau"
+        }
+    ],
+    "Midfielders": [
+        {
+            "role": "Ball-Winning Midfielder Defend",
+            "role_abbr": "bwmd"
+        },
+        {
+            "role": "Ball-Winning Midfielder Support",
+            "role_abbr": "bwms"
+        },
+        {
+            "role": "Anchor Defend",
+            "role_abbr": "ad"
+        },
+        {
+            "role": "Half Back Defend",
+            "role_abbr": "hbd"
+        },
+        {
+            "role": "Roaming Playmaker Support",
+            "role_abbr": "rps"
+        },
+        {
+            "role": "Regista Support",
+            "role_abbr": "regs"
+        }
+    ]
+}
