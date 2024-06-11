@@ -1,3 +1,3 @@
-# Football Manager 24 Python Tools by haalasz
+# Python tools for Football Manager 24
 
-Tools for Football Manager 24.
+Learning project.
