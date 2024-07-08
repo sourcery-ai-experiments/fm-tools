@@ -98,6 +98,7 @@ def calculate_best_players(df, selected_roles, selected_division):
     eligible_positions_goalkeeper = ["GK"]
     eligible_positions_defender = ["D (C)", "D (LC)", "D (RC)", "D (RLC)", "D (L)", "D (R)", "D (RL)", "WB (RL)", "WB (L)", "WB (R)" , "DM"]
     eligible_positions_fullbacks = ["D (LC)", "D (RC)", "D (RLC)", "D (L)", "D (R)", "D (RL)", "WB (RL)", "WB (L)", "WB (R)", "M (L)", "M (R)", "M (RL)"]
+    eligible_positions_midfielders = ["DM", "M (C)", "AM (C)"]
 
     best_players = {}
 
@@ -123,6 +124,10 @@ def calculate_best_players(df, selected_roles, selected_division):
                             total_score = sum(player[attr] * role_info[attr] for attr in role_info if attr not in ['role', 'role_abbr'])
                             normalized_score = total_score / total_multiplier
                             scores.append((player['Name'], player['Age'], player['Position'], player['Club'], player['Division'], player['Height'], player['Weight'], player['Preferred Foot'], normalized_score))
+                        elif any(pos in player['Position'] for pos in eligible_positions_midfielders) and role_abbr.startswith(("dmd", "dms", "bwmd", "bwms", "hbd", "ad", "dlpd", "dlps", "svs", "sva", "rps", "rs", "cmd", "cms", "cma", "cmau", "cs", "bbms", "ms", "ma", "aps", "apa", "ams", "ama", "ssa", "ta", "es")):
+                            total_score = sum(player[attr] * role_info[attr] for attr in role_info if attr not in ['role', 'role_abbr'])
+                            normalized_score = total_score / total_multiplier
+                            scores.append((player['Name'], player['Age'], player['Position'], player['Club'], player['Division'], player['Height'], player['Weight'], player['Preferred Foot'], normalized_score))
 
                 # Sort players by normalized score
                 sorted_scores = sorted(scores, key=lambda x: x[8], reverse=True)
@@ -143,6 +148,7 @@ def calculate_all_roles_for_players(df, selected_division):
     eligible_positions_goalkeeper = ["GK"]
     eligible_positions_defender = ["D (C)", "D (LC)", "D (RC)", "D (RLC)", "D (L)", "D (R)", "D (RL)", "WB (RL)", "WB (L)", "WB (R)" , "DM"]
     eligible_positions_fullbacks = ["D (LC)", "D (RC)", "D (RLC)", "D (L)", "D (R)", "D (RL)", "WB (RL)", "WB (L)", "WB (R)", "M (L)", "M (R)", "M (RL)"]
+    eligible_positions_midfielders = ["DM", "M (C)", "AM (C)"]
     all_players_scores = []
 
     for _, player in df.iterrows():
@@ -166,6 +172,10 @@ def calculate_all_roles_for_players(df, selected_division):
                         total_score = sum(player[attr] * role_info[attr] for attr in role_info if attr not in ['role', 'role_abbr'])
                         normalized_score = total_score / total_multiplier
                         player_scores.append(normalized_score)
+                    elif any(pos in player['Position'] for pos in eligible_positions_midfielders) and role_abbr.startswith(("dmd", "dms", "bwmd", "bwms", "hbd", "ad", "dlpd", "dlps", "svs", "sva", "rps", "rs", "cmd", "cms", "cma", "cmau", "cs", "bbms", "ms", "ma", "aps", "apa", "ams", "ama", "ssa", "ta", "es")):
+                        total_score = sum(player[attr] * role_info[attr] for attr in role_info if attr not in ['role', 'role_abbr'])
+                        normalized_score = total_score / total_multiplier
+                        player_scores.append(normalized_score)
                     else:
                         player_scores.append(None)  # Append None if not applicable
 
@@ -186,6 +196,7 @@ def save_all_players_scores_to_csv(df, roles_info, selected_roles, selected_divi
             eligible_positions_goalkeeper = ["GK"]
             eligible_positions_defender = ["D (C)", "D (LC)", "D (RC)", "D (RLC)", "D (L)", "D (R)", "D (RL)", "WB (RL)", "WB (L)", "WB (R)", "DM"]
             eligible_positions_fullbacks = ["D (LC)", "D (RC)", "D (RLC)", "D (L)", "D (R)", "D (RL)", "WB (RL)", "WB (L)", "WB (R)", "M (L)", "M (R)", "M (RL)"]
+            eligible_positions_midfielders = ["DM", "M (C)", "AM (C)"]
 
             for _, player in df.iterrows():
                 if selected_division == '-ALL-' or player['Division'] == selected_division:
@@ -198,6 +209,10 @@ def save_all_players_scores_to_csv(df, roles_info, selected_roles, selected_divi
                         normalized_score = total_score / total_multiplier
                         scores.append((player['Name'], player['Age'], player['Position'], player['Club'], player['Division'], player['Height'], player['Weight'], player['Preferred Foot'], normalized_score))
                     elif any(pos in player['Position'] for pos in eligible_positions_fullbacks) and role_abbr.startswith(("fbd", "fbs", "fba", "fbau", "nfbd", "wbd", "wbs", "wba", "wbau", "cwbs", "cwba", "iwbd", "iwbs", "iwba", "iwbau", "ifbd")):
+                        total_score = sum(player[attr] * role_info[attr] for attr in role_info if attr not in ['role', 'role_abbr'])
+                        normalized_score = total_score / total_multiplier
+                        scores.append((player['Name'], player['Age'], player['Position'], player['Club'], player['Division'], player['Height'], player['Weight'], player['Preferred Foot'], normalized_score))
+                    elif any(pos in player['Position'] for pos in eligible_positions_midfielders) and role_abbr.startswith(("dmd", "dms", "bwmd", "bwms", "hbd", "ad", "dlpd", "dlps", "svs", "sva", "rps", "rs", "cmd", "cms", "cma", "cmau", "cs", "bbms", "ms", "ma", "aps", "apa", "ams", "ama", "ssa", "ta", "es")):
                         total_score = sum(player[attr] * role_info[attr] for attr in role_info if attr not in ['role', 'role_abbr'])
                         normalized_score = total_score / total_multiplier
                         scores.append((player['Name'], player['Age'], player['Position'], player['Club'], player['Division'], player['Height'], player['Weight'], player['Preferred Foot'], normalized_score))
